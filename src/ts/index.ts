@@ -14,5 +14,7 @@ function createPizzaTemplate(pizza: PizzaProperties): string {
 document.addEventListener("DOMContentLoaded", async () => {
   const pizzas = await Pizza.loadAll();
 
+  const pizzaTemplates = pizzas.map((pizza) => createPizzaTemplate(pizza));
+
   console.log(pizzas);
 });

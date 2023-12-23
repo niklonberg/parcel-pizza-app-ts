@@ -590,6 +590,7 @@ function createPizzaTemplate(pizza) {
 }
 document.addEventListener("DOMContentLoaded", async ()=>{
     const pizzas = await (0, _pizzaDefault.default).loadAll();
+    const pizzaTemplates = pizzas.map((pizza)=>createPizzaTemplate(pizza));
     console.log(pizzas);
 });
 

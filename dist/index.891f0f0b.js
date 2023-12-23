@@ -575,7 +575,89 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8tyFx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _pizza = require("./models/Pizza");
+var _pizzaDefault = parcelHelpers.interopDefault(_pizza);
+document.addEventListener("DOMContentLoaded", async ()=>{
+    const pizzas = await (0, _pizzaDefault.default).loadAll();
+    console.log(pizzas);
+});
+document.addEventListener("DOMContentLoaded", async ()=>{
+    const selectedPizza = await (0, _pizzaDefault.default).loadOne(1);
+    console.log(selectedPizza);
+});
 
-},{}]},["7lMyb","8tyFx"], "8tyFx", "parcelRequire9a89")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./models/Pizza":"85kvU"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"85kvU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _dataResource = require("../services/DataResource");
+var _dataResourceDefault = parcelHelpers.interopDefault(_dataResource);
+const Pizza = new (0, _dataResourceDefault.default)("http://localhost:3000/pizzas");
+exports.default = Pizza;
+
+},{"../services/DataResource":"7WAiV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7WAiV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class DataResource {
+    constructor(endpoint){
+        this.endpoint = endpoint;
+    }
+    async loadAll() {
+        const response = await fetch(this.endpoint);
+        return response.json();
+    }
+    async loadOne(id1) {
+        const response = await fetch(`${this.endpoint}/${id1}`);
+        return response.json();
+    }
+    async delete(id1) {
+        const response = await fetch(`${this.endpoint}/${id1}`, {
+            method: "DELETE"
+        });
+        return response;
+    }
+    async save(data) {
+        const response = await fetch(`${this.endpoint}/${id}`, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+    }
+}
+exports.default = DataResource;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7lMyb","8tyFx"], "8tyFx", "parcelRequire9a89")
 
 //# sourceMappingURL=index.891f0f0b.js.map

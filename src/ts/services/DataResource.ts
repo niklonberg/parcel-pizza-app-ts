@@ -1,13 +1,33 @@
 class DataResource<T> {
   constructor(private endpoint: string) {}
 
-  async loadAll() {}
+  async loadAll(): Promise<T[]> {
+    const response = await fetch(this.endpoint);
 
-  async loadOne(id: number) {}
+    return response.json();
+  }
 
-  async delete(id: number) {}
+  async loadOne(id: number): Promise<T> {
+    const response = await fetch(`${this.endpoint}/${id}`);
 
-  async save(data: T) {}
+    return response.json();
+  }
+
+  async delete(id: number): Promise<Response> {
+    const response = await fetch(`${this.endpoint}/${id}`, {
+      method: "DELETE",
+    });
+
+    return response;
+  }
+
+  async save(data: T) {
+    const response = await fetch(`${this.endpoint}/${id}`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
 
 export default DataResource;

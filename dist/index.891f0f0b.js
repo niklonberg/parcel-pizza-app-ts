@@ -582,10 +582,6 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     const pizzas = await (0, _pizzaDefault.default).loadAll();
     console.log(pizzas);
 });
-document.addEventListener("DOMContentLoaded", async ()=>{
-    const selectedPizza = await (0, _pizzaDefault.default).loadOne(1);
-    console.log(selectedPizza);
-});
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./models/Pizza":"85kvU"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -636,18 +632,18 @@ class DataResource {
         const response = await fetch(this.endpoint);
         return response.json();
     }
-    async loadOne(id1) {
-        const response = await fetch(`${this.endpoint}/${id1}`);
+    async loadOne(id) {
+        const response = await fetch(`${this.endpoint}/${id}`);
         return response.json();
     }
-    async delete(id1) {
-        const response = await fetch(`${this.endpoint}/${id1}`, {
+    async delete(id) {
+        const response = await fetch(`${this.endpoint}/${id}`, {
             method: "DELETE"
         });
         return response;
     }
     async save(data) {
-        const response = await fetch(`${this.endpoint}/${id}`, {
+        const response = await fetch(this.endpoint, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {

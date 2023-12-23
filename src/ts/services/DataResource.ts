@@ -22,7 +22,7 @@ class DataResource<T> {
   }
 
   async save(data: T) {
-    const response = await fetch(`${this.endpoint}/${id}`, {
+    const response = await fetch(this.endpoint, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },

@@ -21,12 +21,14 @@ class DataResource<T> {
     return response;
   }
 
-  async save(data: T) {
+  async save(data: T): Promise<Response> {
     const response = await fetch(this.endpoint, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     });
+
+    return response;
   }
 }
 

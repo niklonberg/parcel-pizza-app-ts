@@ -603,37 +603,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     console.log(pizzas);
 });
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./models/Pizza":"85kvU"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"85kvU":[function(require,module,exports) {
+},{"./models/Pizza":"85kvU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"85kvU":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _dataResource = require("../services/DataResource");
@@ -670,10 +640,41 @@ class DataResource {
                 "Content-Type": "application/json"
             }
         });
+        return response;
     }
 }
 exports.default = DataResource;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7lMyb","8tyFx"], "8tyFx", "parcelRequire9a89")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}]},["7lMyb","8tyFx"], "8tyFx", "parcelRequire9a89")
 
 //# sourceMappingURL=index.891f0f0b.js.map
